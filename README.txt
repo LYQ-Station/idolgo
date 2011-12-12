@@ -1,0 +1,1 @@
+idolgo.com
