@@ -74,6 +74,24 @@ class Token
 
 		return self::$instance;
     }
+	
+	/**
+	 * 获取当前登录者的令牌实例
+	 *
+	 * @return Token
+	 */
+	static public function get_instance ()
+	{
+		if (self::$instance)
+		{
+			return self::$instance;
+		}
+		
+//		self::$instance = self::create_abstract('123');
+//		return self::$instance;
+
+		throw new TokenException('令牌未初始化', TokenException::NO_INIT);
+	}
 
 	/**
 	 * 获取token中变量值
@@ -90,21 +108,6 @@ class Token
 			return $this->$var;
 
 		return null;
-	}
-
-	/**
-	 * 获取当前登录者的令牌实例
-	 *
-	 * @return Token
-	 */
-	static public function get_instance ()
-	{
-		if (self::$instance)
-		{
-			return self::$instance;
-		}
-
-		throw new TokenException('令牌未初始化', TokenException::NO_INIT);
 	}
 
 	/**

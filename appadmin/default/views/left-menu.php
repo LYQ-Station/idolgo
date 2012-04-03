@@ -1,20 +1,27 @@
 <ul id="navigation" class="treeview">
     <ul>
-        <li><span>Resource</span>
+        <li><span>项目分类</span>
             <ul class="sub">
-                <li><a href="<?=$this->buildUrl('list','resource','resource')?>">ResourceList</a></li>
-                <li><a href="<?=$this->buildUrl('addpage','resource','resource')?>">Add Resource</a></li>
-                <li><a href="<?=$this->buildUrl('addpage','volume','resource')?>">Add Volume</a></li>
-                <li><a href="<?=$this->buildUrl('addpage','uri','resource')?>">Add URI</a></li>
+                <li><a href="<?=$this->buildUrl('list','index','category')?>">分类列表</a></li>
+                <li><a href="<?=$this->buildUrl('addpage','index','category')?>">添加分类</a></li>
             </ul>
         </li>
     </ul>
     
+	<ul>
+        <li><span>项目</span>
+            <ul class="sub">
+                <li><a href="<?=$this->buildUrl('addpage','index','project')?>">项目列表</a></li>
+                <li><a href="<?=$this->buildUrl('list','index','project')?>">添加项目</a></li>
+            </ul>
+        </li>
+    </ul>
+	
     <ul>
         <li><span>Tags</span>
             <ul class="sub">
-                <li><a href="<?=$this->buildUrl('addpage','index','tag')?>">Add Tag</a></li>
-                <li><a href="<?=$this->buildUrl('list','index','tag')?>">Tags</a></li>
+                <li><a href="<?=$this->buildUrl('addpage','index','tags')?>">Add Tag</a></li>
+                <li><a href="<?=$this->buildUrl('list','index','tags')?>">Tags</a></li>
             </ul>
         </li>
     </ul>
@@ -27,9 +34,18 @@
             </ul>
         </li>
     </ul>
+	
+	<ul>
+        <li><span>系统设置</span>
+            <ul class="sub">
+                <li><a href="#">站点信息</a></li>
+                <li><a href="#">缓存管理</a></li>
+            </ul>
+        </li>
+    </ul>
     
     <ul>
-        <li><span>System Settings</span>
+        <li><span>Core Settings</span>
             <ul class="sub">
                 <!--<li><span>基础资料设置</span>
                     <ul class="sub">

@@ -8,15 +8,22 @@ class AuthPlugin extends Zend_Controller_Plugin_Abstract
         
         if (defined('APP_ADMIN'))
         {
-            if (!$tsn)
-            {
-				$request->setModuleName('default');
-                $request->setControllerName('auth');
-                $request->setActionName('login');
-				return;
-            }
+//            if (!$tsn)
+//            {
+//				$request->setModuleName('default');
+//                $request->setControllerName('auth');
+//                $request->setActionName('login');
+//				return;
+//            }
             
-            $token = Token::create($tsn);
+			if ($tsn)
+			{
+				$token = Token::create($tsn);
+			}
+			else
+			{
+				$token = Token::create_abstract('123'); 
+			}
             
             if($token->is_logined() == true)
             {
@@ -33,11 +40,13 @@ class AuthPlugin extends Zend_Controller_Plugin_Abstract
             }
             else
             {
-                $token->destroy();
-				$request->setModuleName('default');
-                $request->setControllerName('auth');
-                $request->setActionName('login');
-				return;
+				if ('auth' != $request->getActionName())
+				{
+					$token->destroy();
+					$request->setModuleName('default');
+					$request->setControllerName('auth');
+					$request->setActionName('login');
+				}
             }
         }
         else if (defined('APP_FRONTEND'))

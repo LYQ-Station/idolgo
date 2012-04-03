@@ -1,6 +1,6 @@
 <div id="container">
     <div id="top_navigation">
-        <div class="logo">LBS管理后台 test</div>
+        <div class="logo">管理后台</div>
         <div id="nav">
             <?=$this->token->uname?>
             <a href="<?=$this->buildUrl('logout','auth')?>">[登出]</a>

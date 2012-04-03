@@ -67,7 +67,7 @@ class BaseController extends Zend_Controller_Action
         
 //        $this->cache = Zend_Registry::get('cache');
         
-//        $this->init();
+        $this->init();
     }
 
 	public function __destruct ()
