@@ -37,7 +37,8 @@ class BaseController extends Zend_Controller_Action
             ));
         
         $models_arr = array();
-        foreach (Zend_Registry::get('modules')->toArray() as $model)
+		$models_array = Zend_Registry::get('modules')->toArray();
+        foreach ($models_array as $model)
         {
         	$models_arr[$model['name']] = APPS_PATH . DIRECTORY_SEPARATOR . $model['dir'] . DIRECTORY_SEPARATOR. 'models';
         }
@@ -55,7 +56,8 @@ class BaseController extends Zend_Controller_Action
         $this->view->token = $this->token;
         $this->view->request = $this->_request;
         
-        $this->view->headTitle($config->web->title, 'SET');
+        $this->view->headTitle($config->web->title . ' - ' .$models_array[$this->_request->getModuleName()]['name'], 'SET');
+		unset($models_array);
 		$this->view->headMeta()->prependName('keywords', $config->web->keywords);
 		$this->view->headMeta()->prependName('description', $config->web->description);
         

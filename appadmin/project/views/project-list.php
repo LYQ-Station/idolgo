@@ -1,7 +1,6 @@
 <div class="page_head">
-    <div class="page_title">分类列表</div>
+    <div class="page_title">项目列表</div>
     <div class="page_nav">
-    	<button id="btn_add">新增</button>
     	<a href="<?=$this->buildUrl('list')?>">全部</a>
     	<a href="<?=$this->buildUrl('list',null,null,array('c'=>SearchFilter::encode('status<>0')))?>">被禁用</a>
     </div>
@@ -18,21 +17,28 @@
         <tr>
             <th width="25"><input type="checkbox" /></th>
             <th>ID</th>
-            <th>分类名</th>
-            <th>创建时间</th>
+            <th>项目名</th>
+            <th>发起人</th>
+			<th>创建地点</th>
+			<th>创建时间</th>
+			<th>简介</th>
             <th width="120">操作</th>
         </tr>
         <?php if (!$this->items):?>
         <tr>
-        	<td colspan="5" align="center">暂无记录。</td>
+        	<td colspan="8" align="center">暂无记录。</td>
         </tr>
         <?php else: foreach ($this->items as $item):?>
         <tr>
             <td width="25"><input type="checkbox" /></td>
             <td><?=$item['id']?></td>
-            <td><?=$item['tag']?></td>
-            <td><?=$item['create_time']?></td>
+            <td><?=$item['title']?></td>
+            <td><?=$item['manager']?></td>
+			<td><?=$item['cloction']?></td>
+			<td><?=$item['ctime']?></td>
+			<td><?=$item['contents']?></td>
             <td width="120" class="op">
+				<a href="#">动态</a>
             	<a href="#" class="a_dis" lang="<?=$item['id']?>" status="<?=$item['status']?>"><?=HTMLUtils::pick_value2($item['status'],'Enable','Disable')?></a>
                 <a href="#" class="a_del" lang="<?=$item['id']?>">Del</a>
             </td>
@@ -45,20 +51,6 @@
         <?=$this->navigator?>
     </div>
 </div>
-<div class="dialog">
-	<form name="dialog_frm" id="dialog_frm">
-		<table>
-			<tr>
-				<td>分类名:</td>
-				<td><input type="text" name="new_category_name" /></td>
-			</tr>
-			<tr>
-				<td>查询:</td>
-				<td><textarea></textarea></td>
-			</tr>
-		</table>
-	</form>
-</div>
 <?=JsUtils::ob_start();?>
 <script>
 $(function ()
@@ -69,46 +61,6 @@ $(function ()
 		global: false,
 		type: "POST",
 		dataType: 'json'
-	});
-	
-	$('#btn_add').click(function ()
-	{
-		$('.dialog').dialog({
-			title : '添加新分类',
-			buttons : {
-				'确定' : function ()
-				{
-					var frm = document.forms['dialog_frm'];
-					var text = frm['new_category_name'].value;
-					if (0 == text.length)
-					{
-						alert('请填写分类名!');
-						return false;
-					}
-					
-					$.ajax({
-						url: '<?=$this->buildUrl('ajaxadd')?>',
-						data: $.param({category:text}),
-						success: function (data)
-						{
-							if (data.err_no)
-							{
-								alert(data.err_text);
-								return false;
-							}
-						}
-					});
-					
-					$('.dialog').dialog('close');
-				},
-				'关闭' : function ()
-				{
-					$('.dialog').dialog('close');
-				}
-			}
-		});
-		
-		return false;
 	});
 	
 	$('.a_dis').live('click', function ()

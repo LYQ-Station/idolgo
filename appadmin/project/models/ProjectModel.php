@@ -3,12 +3,12 @@
  * 分类模型
  * 
  */
-class CategoryModel extends BaseModel
+class ProjectModel extends BaseModel
 {
     public function get_list ($page_no, $params = null)
     {
         $select = $this->db->select()
-                ->from(DBTables::CATEGORY)
+                ->from(DBTables::PROJECT)
                 ->order('ctime DESC');
         
         if (!empty($params))
@@ -38,7 +38,7 @@ class CategoryModel extends BaseModel
 	public function add ($tag)
 	{
 		$this->db->insert(DBTables::TAG, array(
-			'tag'			=> $tag,
+			'title'			=> $tag,
 			'ctime'	=> TimeUtils::db_time(),
 			'status'		=> 0
 		));

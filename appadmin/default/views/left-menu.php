@@ -11,8 +11,8 @@
 	<ul>
         <li><span>项目</span>
             <ul class="sub">
-                <li><a href="<?=$this->buildUrl('addpage','index','project')?>">项目列表</a></li>
-                <li><a href="<?=$this->buildUrl('list','index','project')?>">添加项目</a></li>
+                <li><a href="<?=$this->buildUrl('list','index','project')?>">项目列表</a></li>
+<!--                <li><a href="<?=$this->buildUrl('addpage','index','project')?>">添加项目</a></li>-->
             </ul>
         </li>
     </ul>
@@ -26,14 +26,14 @@
         </li>
     </ul>
     
-    <ul>
+<!--    <ul>
         <li><span>日志管理</span>
             <ul class="sub">
                 <li><a href="#">前端日志</a></li>
                 <li><a href="<?=$this->buildUrl('index','adminlog','default')?>">管理日志</a></li>
             </ul>
         </li>
-    </ul>
+    </ul>-->
 	
 	<ul>
         <li><span>系统设置</span>
