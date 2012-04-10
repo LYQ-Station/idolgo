@@ -37,6 +37,33 @@ class Project_IndexController extends BaseController
 		
         $this->render('project-list');
 	}
+	
+	public function infoAction ()
+	{
+		$proj_id = intval($this->_request->proj_id);
+		
+		$this->render('project-info');
+	}
+	
+	public function approvalAction ()
+	{
+		
+	}
+	
+	public function closeAction ()
+	{
+		
+	}
+	
+	public function setproductAction ()
+	{
+		
+	}
+	
+	public function unsetproductAction ()
+	{
+		
+	}
     
     public function searchfieldsAction ()
     {

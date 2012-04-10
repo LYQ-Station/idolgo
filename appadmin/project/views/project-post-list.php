@@ -1,27 +1,15 @@
 <div class="page_head">
-    <div class="page_title">项目列表</div>
-    <div class="page_nav">
-    	<a href="<?=$this->buildUrl('list')?>">全部</a>
-    	<a href="<?=$this->buildUrl('list',null,null,array('c'=>SearchFilter::encode('status<>0')))?>">被禁用</a>
-    </div>
-    <div class="page_tools">
-    	<form action="" method="get">
-            <input type="text" name="keyword" value="<?=$this->request->keyword?>" />
-            <input type="submit" value="查询" />
-            <button id="srh_adv_btn">高级查询</button>
-        </form>
-    </div>
+    <div class="page_title">项目动态列表</div>
 </div>
 <div class="page_body">
     <table class="ttable">
         <tr>
             <th width="25"><input type="checkbox" /></th>
             <th>ID</th>
-            <th>项目名</th>
-            <th>发起人</th>
-			<th>创建地点</th>
-			<th>创建时间</th>
-			<th>简介</th>
+            <th>title</th>
+            <th>creator</th>
+			<th>ctime</th>
+			<th>contents</th>
             <th width="120">操作</th>
         </tr>
         <?php if (!$this->items):?>
@@ -32,14 +20,11 @@
         <tr>
             <td width="25"><input type="checkbox" /></td>
             <td><?=$item['id']?></td>
-            <td><a href="<?=$this->buildUrl('info', null, null, array('proj_id'=>$item['id']))?>"><?=$item['title']?></a></td>
-            <td><?=$item['manager']?></td>
-			<td><?=$item['cloction']?></td>
+            <td><?=$item['title']?></td>
+            <td><?=$item['creator']?></td>
 			<td><?=$item['ctime']?></td>
 			<td><?=$item['contents']?></td>
-            <td width="150" class="op">
-				<a href="<?=$this->buildUrl('list', 'post', null, array('proj_id'=>$item['id']))?>">动态</a>
-                <a href="<?=$this->buildUrl('options', 'provide', null, array('proj_id'=>$item['id']))?>">provide</a>
+            <td width="120" class="op">
             	<a href="#" class="a_dis" lang="<?=$item['id']?>" status="<?=$item['status']?>"><?=HTMLUtils::pick_value2($item['status'],'Enable','Disable')?></a>
                 <a href="#" class="a_del" lang="<?=$item['id']?>">Del</a>
             </td>

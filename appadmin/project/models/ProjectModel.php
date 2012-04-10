@@ -58,5 +58,22 @@ class ProjectModel extends BaseModel
 	{
 		$this->edit($id, array('status'=>$status));
 	}
+	
+	public function get_post_list ($proj_id, $page_no, $params = null)
+	{
+		$select = $this->db->select()
+                ->from(DBTables::PROJECT)
+				->where('proj_id=?', $proj_id)
+                ->order('ctime DESC');
+		
+		$pager = new Pager($this->db, $select);
+        $sql = $pager->get_page($page_no);
+        
+        $ret = new stdClass();
+        $ret->data = $this->db->fetchAll($sql);
+        $ret->pager = $pager;
+        
+        return $ret;
+	}
 }
 

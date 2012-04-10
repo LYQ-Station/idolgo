@@ -83,7 +83,7 @@ input.datepicker {
 
 .page_body_b {
     bottom: 0;
-	overflow:hidden;
+	/*overflow:hidden;*/
 }
 
 .page_foot {
@@ -132,6 +132,16 @@ input.datepicker {
 
 .tinfo input.txt {
 	width:500px;
+}
+
+.tinfo .tlabel {
+	width:200px;
+}
+
+.tinfo .tlabel .r {
+	display:block;
+	margin-right:10px;
+	text-align:right;
 }
 /* /information table */
 
