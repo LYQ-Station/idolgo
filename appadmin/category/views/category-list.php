@@ -29,9 +29,9 @@
         <?php else: foreach ($this->items as $item):?>
         <tr>
             <td width="25"><input type="checkbox" /></td>
-            <td><?=$item['id']?></td>
-            <td><?=$item['tag']?></td>
-            <td><?=$item['create_time']?></td>
+            <td width="150"><?=$item['id']?></td>
+            <td><?=$item['title']?></td>
+            <td width="200"><?=$item['ctime']?></td>
             <td width="120" class="op">
             	<a href="#" class="a_dis" lang="<?=$item['id']?>" status="<?=$item['status']?>"><?=HTMLUtils::pick_value2($item['status'],'Enable','Disable')?></a>
                 <a href="#" class="a_del" lang="<?=$item['id']?>">Del</a>
@@ -47,14 +47,18 @@
 </div>
 <div class="dialog">
 	<form name="dialog_frm" id="dialog_frm">
-		<table>
+		<table class="tinfo">
 			<tr>
 				<td>分类名:</td>
-				<td><input type="text" name="new_category_name" /></td>
+				<td><input type="text" name="new_title" /></td>
+			</tr>
+            <tr>
+				<td>分类号:</td>
+				<td><input type="text" name="new_sn" /></td>
 			</tr>
 			<tr>
 				<td>查询:</td>
-				<td><textarea></textarea></td>
+				<td><textarea name="new_condition"></textarea></td>
 			</tr>
 		</table>
 	</form>
@@ -75,20 +79,28 @@ $(function ()
 	{
 		$('.dialog').dialog({
 			title : '添加新分类',
+			width : 500,
+			resizable : false,
 			buttons : {
 				'确定' : function ()
 				{
 					var frm = document.forms['dialog_frm'];
-					var text = frm['new_category_name'].value;
+					var text = frm['new_title'].value;
 					if (0 == text.length)
 					{
 						alert('请填写分类名!');
 						return false;
 					}
 					
+					var parms = {
+						sn : frm['new_sn'].value,
+						title : frm['new_title'].value,
+						condition : frm['new_condition'].value
+					};
+					
 					$.ajax({
 						url: '<?=$this->buildUrl('ajaxadd')?>',
-						data: $.param({category:text}),
+						data: $.param(parms),
 						success: function (data)
 						{
 							if (data.err_no)
@@ -100,6 +112,8 @@ $(function ()
 					});
 					
 					$('.dialog').dialog('close');
+					
+					window.location.reload();
 				},
 				'关闭' : function ()
 				{

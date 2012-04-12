@@ -16,6 +16,7 @@ class CategoryModel extends BaseModel
             if (isset($params['keyword']))
             {
                 $select->orWhere('id=?', $params['keyword']);
+				$select->orWhere('sn=?', $params['keyword']);
                 $select->orWhere('title=?', $params['keyword']);
                 $select->orWhere('ctime=?', $params['keyword']);
             }
@@ -24,7 +25,7 @@ class CategoryModel extends BaseModel
                 $select->where(SearchFilter::decode($params['c']));
             }
         }
-        
+		
         $pager = new Pager($this->db, $select);
         $sql = $pager->get_page($page_no);
         
@@ -35,11 +36,13 @@ class CategoryModel extends BaseModel
         return $ret;
     }
 	
-	public function add ($tag)
+	public function add ($category_property)
 	{
-		$this->db->insert(DBTables::TAG, array(
-			'tag'			=> $tag,
-			'ctime'	=> TimeUtils::db_time(),
+		$this->db->insert(DBTables::CATEGORY, array(
+			'sn'			=> $category_property['sn'],
+			'title'			=> $category_property['title'],
+			'condition'		=> $category_property['condition'],
+			'ctime'			=> TimeUtils::db_time(),
 			'status'		=> 0
 		));
 	}

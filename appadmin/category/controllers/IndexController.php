@@ -39,15 +39,36 @@ class Category_IndexController extends BaseController
 		$this->render('category-list');
 	}
 	
+	public function addAction ()
+	{
+		$property = array();
+		
+		$property['sn'] = $this->_request->sn;
+		$property['title'] = $this->_request->title;
+		$property['condition'] = $this->_request->condition;
+		
+		$this->forward('list');
+	}
+	
 	public function ajaxaddAction ()
 	{
 		$this->_helper->layout->disableLayout();
 		
-		$tag = $this->_request->tag;
+		$property = array();
 		
-		$this->model->add($tag);
+		$property['sn'] = $this->_request->sn;
+		$property['title'] = $this->_request->title;
+		$property['condition'] = $this->_request->condition;
 		
-		AjaxUtils::json('ok');
+		try
+		{
+			$this->model->add($property);
+			AjaxUtils::json('ok');
+		}
+		catch (Exception $e)
+		{
+			AjaxUtils::json_err($e->getCode(), $e->getMessage());
+		}
 	}
 	
 	public function ajaxdeleteAction ()
@@ -112,9 +133,9 @@ class Category_IndexController extends BaseController
         
         AjaxUtils::json(array(
             array('l'=>'ID', 'f'=>'id', 't'=>'str'),
-            array('l'=>'父ID', 'f'=>'pid', 't'=>'str'),
+            array('l'=>'序列号', 'f'=>'sn', 't'=>'str'),
             array('l'=>'标题', 'f'=>'title', 't'=>'str'),
-            array('l'=>'发布时间', 'f'=>'crate_time', 't'=>'date')
+            array('l'=>'发布时间', 'f'=>'ctime', 't'=>'date')
         ));
     }
 }

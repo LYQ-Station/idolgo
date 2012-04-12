@@ -1,8 +1,8 @@
 <div class="page_head">
     <div class="page_title">项目内容</div>
     <div class="page_nav">
-    	<button id="btn_add">Approval</button>
-        <button id="btn_add">Cancel</button>
+    	<button id="btn_approval" lang="0">Approval</button>
+        <button id="btn_cancel">Cancel</button>
         <a href="<?=$this->buildUrl('list')?>">Close</a>
     </div>
 </div>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
         	<td class="tlabel"><label class="r">简要说明: </label></td>
-            <td><textarea>xxxxxxxxxxggggggg</textarea></td>
+            <td><textarea></textarea></td>
         </tr>
         <tr>
         	<td class="tlabel"><label class="r">缩略图: </label></td>
@@ -51,6 +51,53 @@ $(function ()
 		global: false,
 		type: "POST",
 		dataType: 'json'
+	});
+	
+	$('#btn_approval').click(function () {
+		var self = this;
+		
+		if ('0' == self.lang)
+		{
+			$.ajax({
+				url: '<?=$this->buildUrl('ajaxapproval')?>',
+				data: $.param({id:<?=$this->request->proj_id?>}),
+				success: function (data)
+				{
+					if (data.err_no)
+					{
+						alert(data.err_text);
+						return false;
+					}
+					
+					self.innerHTML = 'Unapproval';
+					self.lang = 1;
+					alert('have approval!');
+					
+					return false;
+				}
+			});
+		}
+		else
+		{
+			$.ajax({
+				url: '<?=$this->buildUrl('ajaxunapproval')?>',
+				data: $.param({id:<?=$this->request->proj_id?>}),
+				success: function (data)
+				{
+					if (data.err_no)
+					{
+						alert(data.err_text);
+						return false;
+					}
+					
+					self.innerHTML = 'Approval';
+					self.lang = 0;
+					alert('have unapproval!');
+					
+					return false;
+				}
+			});
+		}
 	});
 });
 </script>

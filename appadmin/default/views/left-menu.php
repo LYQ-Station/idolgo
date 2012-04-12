@@ -16,8 +16,18 @@
             </ul>
         </li>
     </ul>
+    
+    <ul>
+        <li><span>账目</span>
+            <ul class="sub">
+                <li><a href="<?=$this->buildUrl('list','index','payment')?>">支持资金列表</a></li>
+                <li><a href="#">报表</a></li>
+            </ul>
+        </li>
+    </ul>
 	
     <ul>
+    
         <li><span>Tags</span>
             <ul class="sub">
                 <li><a href="<?=$this->buildUrl('addpage','index','tags')?>">Add Tag</a></li>

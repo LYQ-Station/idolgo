@@ -55,6 +55,11 @@ class Project_IndexController extends BaseController
 		
 	}
 	
+	public function openAction ()
+	{
+		
+	}
+
 	public function setproductAction ()
 	{
 		
@@ -63,6 +68,34 @@ class Project_IndexController extends BaseController
 	public function unsetproductAction ()
 	{
 		
+	}
+	
+	public function ajaxapprovalAction ()
+	{
+		$this->_helper->layout->disableLayout();
+		
+		try
+		{
+			AjaxUtils::json('ok');
+		}
+		catch (Exception $e)
+		{
+			AjaxUtils::json_err($e->getCode(), $e->getMessage());
+		}
+	}
+	
+	public function ajaxunapprovalAction ()
+	{
+		$this->_helper->layout->disableLayout();
+		
+		try
+		{
+			AjaxUtils::json('ok');
+		}
+		catch (Exception $e)
+		{
+			AjaxUtils::json_err($e->getCode(), $e->getMessage());
+		}
 	}
     
     public function searchfieldsAction ()
