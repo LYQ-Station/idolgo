@@ -18,33 +18,28 @@
             <th width="25"><input type="checkbox" /></th>
             <th>ID</th>
             <th>order sn</th>
-            <th>product sn</th>
 			<th>product</th>
 			<th>payment type</th>
-			<th>code</th>
+			<th>agent sn</th>
             <th>amount</th>
+            <th>create time</th>
             <th>status</th>
-            <th width="120">操作</th>
         </tr>
         <?php if (!$this->items):?>
         <tr>
-        	<td colspan="10" align="center">暂无记录。</td>
+        	<td colspan="9" align="center">暂无记录。</td>
         </tr>
         <?php else: foreach ($this->items as $item):?>
         <tr>
             <td width="25"><input type="checkbox" /></td>
             <td><?=$item['id']?></td>
-            <td><a href="<?=$this->buildUrl('info', null, null, array('proj_id'=>$item['id']))?>"><?=$item['title']?></a></td>
-            <td><?=$item['manager']?></td>
-			<td><?=$item['cloction']?></td>
+            <td><?=$item['sn']?></td>
+            <td><a href="<?=$this->buildUrl('info', null, null, array('proj_id'=>$item['id']))?>"><?=$item['proj_name']?></a></td>
+            <td><?=$item['type']?></td>
+			<td><?=$item['agrent_sn']?></td>
+            <td><?=$item['amount']?></td>
 			<td><?=$item['ctime']?></td>
-			<td><?=$item['contents']?></td>
-            <td width="150" class="op">
-				<a href="<?=$this->buildUrl('list', 'post', null, array('proj_id'=>$item['id']))?>">动态</a>
-                <a href="<?=$this->buildUrl('options', 'provide', null, array('proj_id'=>$item['id']))?>">provide</a>
-            	<a href="#" class="a_dis" lang="<?=$item['id']?>" status="<?=$item['status']?>"><?=HTMLUtils::pick_value2($item['status'],'Enable','Disable')?></a>
-                <a href="#" class="a_del" lang="<?=$item['id']?>">Del</a>
-            </td>
+			<td><?=$item['status']?></td>
         </tr>
         <?php endforeach; endif;?>
     </table>

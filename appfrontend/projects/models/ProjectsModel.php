@@ -1,6 +1,10 @@
 <?php
 
-class IndexModel extends BaseModel
+/**
+ * 首页处理模型
+ *
+ */
+class ProjectsModel extends BaseModel
 {
     public function show ()
     {

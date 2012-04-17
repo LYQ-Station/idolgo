@@ -8,6 +8,6 @@ class Index_RegisterController extends BaseController
 {
 	public function indexAction ()
 	{
-        $this->render('index');
+        $this->render('register');
 	}
 }

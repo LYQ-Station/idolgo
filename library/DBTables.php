@@ -20,5 +20,7 @@ class DBTables
 	
 	const PROJECT_PROVIDE_OPTION = 'kg_project_provide_option';
 	
+	const TRADE				= 'kg_trade';
+	
 	const USER_FOLLOWER		= 'kg_user_follower';
 }
