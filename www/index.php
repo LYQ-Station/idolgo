@@ -1,5 +1,4 @@
 <?php
-phpinfo();exit;
 define('APP_FRONTEND', true);
 define('SITE_PATH', dirname($_SERVER['DOCUMENT_ROOT']));
 define('ETC_PATH', SITE_PATH.'/etc');
