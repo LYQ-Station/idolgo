@@ -1,58 +1,23 @@
-project add page      项目简介
+project add desc      项目简介
 <hr />
 
-<form action="<?=$this->buildUrl('add', 'index', 'projects')?>" method="post">
+<form action="<?=$this->buildUrl('adddesc', 'index', 'projects')?>" method="post">
+<input type="hidden" name="sn" value="<?=$this->sn?>" />
 <table>
 	<tr>
-    	<td>项目类别</td>
+    	<td>link</td>
         <td>
-        	<select></select>
+        	<input type="text" name="link" />
         </td>
     </tr>
     
     <tr>
-    	<td>项目名称</td>
+    	<td>descript</td>
         <td>
-        	<input type="text" name="title" />
+        	<input type="text" name="descript" />
         </td>
     </tr>
-    
-    <tr>
-    	<td>发起地点</td>
-        <td>
-        	<select></select>
-            <select></select>
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>简要说明</td>
-        <td>
-        	<textarea name="desc"></textarea>
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>缩略图</td>
-        <td>
-        	<input type="file" name="thumb" />
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>募集金额</td>
-        <td>
-        	<input type="text" name="total_amount" />
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>上线天数</td>
-        <td>
-        	<input type="text" name="online_days" />
-        </td>
-    </tr>
-    
+        
     <tr>
     	<td colspan="2"><input type="submit" /></td>
     </tr>

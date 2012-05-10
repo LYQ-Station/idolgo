@@ -17,13 +17,36 @@ class Projects_IndexController extends BaseController
 		$this->render('add-my-project');
 	}
 
-	public function addpageAction ()
+	public function addbasepageAction ()
 	{
-		$this->render('addpage');
+		$sn = substr(md5(microtime() . 'kaigan8'), 0, 16);
+		
+		$this->view->sn = $sn;
+		$this->render('add-base-page');
 	}
 	
-	public function addAction ()
+	public function addbaseAction ()
 	{
-		$this->forward('info');
+		
+	}
+
+	public function adddescpageAction ()
+	{
+		$this->render('add-desc-page');
+	}
+	
+	public function adddescAction ()
+	{
+		
+	}
+	
+	public function addprovidepageAction ()
+	{
+		$this->render('add-level-page');
+	}
+	
+	public function addprovideAction ()
+	{
+		
 	}
 }

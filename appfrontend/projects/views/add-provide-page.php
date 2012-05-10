@@ -1,24 +1,25 @@
 project add page      项目简介
 <hr />
 
-<form action="<?=$this->buildUrl('add', 'index', 'projects')?>" method="post">
+<form action="<?=$this->buildUrl('addprovide', 'index', 'projects')?>" method="post">
+<input type="hidden" name="sn" value="<?=$this->sn?>" />
 <table>
 	<tr>
-    	<td>项目类别</td>
+    	<td>支持金额</td>
         <td>
-        	<select></select>
+        	<input type="text" name="amount" />
         </td>
     </tr>
     
     <tr>
-    	<td>项目名称</td>
+    	<td>回报内容</td>
         <td>
-        	<input type="text" name="title" />
+        	<input type="text" name="provide" />
         </td>
     </tr>
     
     <tr>
-    	<td>发起地点</td>
+    	<td>说明图片</td>
         <td>
         	<select></select>
             <select></select>
@@ -26,30 +27,19 @@ project add page      项目简介
     </tr>
     
     <tr>
-    	<td>简要说明</td>
+    	<td>限定名额</td>
         <td>
-        	<textarea name="desc"></textarea>
+        	<input type="radio" name="limit" value="0" />
+            <input type="radio" name="limit" value="1" />
+            <input type="text" name="limit_num" />
         </td>
     </tr>
     
     <tr>
-    	<td>缩略图</td>
+    	<td>是否邮寄</td>
         <td>
-        	<input type="file" name="thumb" />
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>募集金额</td>
-        <td>
-        	<input type="text" name="total_amount" />
-        </td>
-    </tr>
-    
-    <tr>
-    	<td>上线天数</td>
-        <td>
-        	<input type="text" name="online_days" />
+        	<input type="radio" name="ems" value="0" />
+            <input type="radio" name="ems" value="1" />
         </td>
     </tr>
     

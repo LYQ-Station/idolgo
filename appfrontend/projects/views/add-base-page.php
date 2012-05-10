@@ -1,12 +1,15 @@
 project add page      项目简介
 <hr />
 
-<form action="<?=$this->buildUrl('add', 'index', 'projects')?>" method="post">
+<form action="<?=$this->buildUrl('addbase', 'index', 'projects')?>" method="post">
+<input type="hidden" name="sn" value="<?=$this->sn?>" />
 <table>
 	<tr>
     	<td>项目类别</td>
         <td>
-        	<select></select>
+        	<select name="category">
+            	<option value="1">design</option>
+            </select>
         </td>
     </tr>
     
