@@ -2,12 +2,12 @@ project add page      项目简介
 <hr />
 
 <form action="<?=$this->buildUrl('addbase', 'index', 'projects')?>" method="post">
-<input type="hidden" name="sn" value="<?=$this->sn?>" />
+<input type="hidden" name="id" value="<?=$this->request->id?>" />
 <table>
 	<tr>
     	<td>项目类别</td>
         <td>
-        	<select name="category">
+        	<select name="category_id">
             	<option value="1">design</option>
             </select>
         </td>

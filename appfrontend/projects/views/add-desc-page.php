@@ -2,7 +2,7 @@ project add desc      项目简介
 <hr />
 
 <form action="<?=$this->buildUrl('adddesc', 'index', 'projects')?>" method="post">
-<input type="hidden" name="sn" value="<?=$this->sn?>" />
+<input type="hidden" name="id" value="<?=$this->request->id?>" />
 <table>
 	<tr>
     	<td>link</td>
@@ -14,7 +14,7 @@ project add desc      项目简介
     <tr>
     	<td>descript</td>
         <td>
-        	<input type="text" name="descript" />
+        	<input type="text" name="contents" />
         </td>
     </tr>
         
