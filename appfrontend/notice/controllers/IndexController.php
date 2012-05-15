@@ -1,9 +1,19 @@
 <?php
 
-class Members_IndexController extends BaseController
+class Notice_IndexController extends BaseController
 {
 	public function indexAction ()
 	{
-        $this->render('profile');
+        
+	}
+	
+	public function allAction ()
+	{
+		
+	}
+	
+	public function infoAction ()
+	{
+		
 	}
 }

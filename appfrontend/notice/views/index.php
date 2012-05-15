@@ -1,1 +1,1 @@
-projects index
+personal profile index

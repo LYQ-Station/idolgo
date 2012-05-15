@@ -1,1 +1,1 @@
-projects index
+project voters

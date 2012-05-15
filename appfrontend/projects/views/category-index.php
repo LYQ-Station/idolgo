@@ -1,1 +1,1 @@
-projects index
+category index page

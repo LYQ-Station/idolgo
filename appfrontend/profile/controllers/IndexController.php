@@ -1,9 +1,14 @@
 <?php
 
-class Members_IndexController extends BaseController
+class Profile_IndexController extends BaseController
 {
 	public function indexAction ()
 	{
-        $this->render('profile');
+        $this->render('index');
+	}
+	
+	public function votedAction ()
+	{
+		$this->render('voted');
 	}
 }

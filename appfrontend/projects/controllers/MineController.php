@@ -1,87 +1,19 @@
 <?php
 
-class Projects_IndexController extends BaseController
+class Projects_MineController extends BaseController
 {
-	/**
-	 * @var ProjectsModel
-	 */
-	protected $model;
-	
-	public function init ()
+	public function postedAction ()
 	{
-		$this->model = new ProjectsModel();
+		$this->render('mine-posted');
 	}
 	
-	public function indexAction ()
+	public function votedAction ()
 	{
-        $this->render('index');
+		$this->render('mine-voted');
 	}
 	
-	public function infoAction ()
+	public function followedAction ()
 	{
-		$this->render('info');
-	}
-	
-	public function addmyprojectAction ()
-	{
-		$this->render('add-my-project');
-	}
-
-	public function addbasepageAction ()
-	{
-		$sn = substr(md5(microtime() . 'kaigan8'), 0, 16);
-		
-		$this->view->sn = $sn;
-		$this->render('add-base-page');
-	}
-	
-	public function addbaseAction ()
-	{
-		$params = $this->_request->getParams();
-		$params = array_intersect_key($params, ProjectsModel::db_fields());
-		
-		$id = $this->model->add_project($params);
-		
-		$this->forward('adddescpage', null, null, array('id'=>$id));
-	}
-
-	public function adddescpageAction ()
-	{
-		$this->render('add-desc-page');
-	}
-	
-	public function adddescAction ()
-	{
-		$id = intval($this->_request->id);
-		
-		$params = $this->_request->getParams();
-		$params = array_intersect_key($params, ProjectsModel::db_fields());
-		unset($params['id']);
-		
-		$this->model->update_project($id, $params);
-		
-		$this->forward('addprovidepage', null, null, array('id'=>$id));
-	}
-	
-	public function addprovidepageAction ()
-	{
-		$this->render('add-provide-page');
-	}
-	
-	public function addprovideAction ()
-	{
-		$id = intval($this->_request->id);
-		
-		$params = $this->_request->p;
-		
-//		print_r($params);exit;
-		
-		foreach ($params as $v)
-		{
-			$p = array_intersect_key($v, ProjectsModel::provide_db_fields());
-			$this->model->add_project_provide($id, $p);
-		}
-		
-		$this->forward('info', null, null, array('id'=>$id));
+		$this->render('mine-followed');
 	}
 }

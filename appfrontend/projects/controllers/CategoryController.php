@@ -4,6 +4,11 @@ class Projects_CategoryController extends BaseController
 {
 	public function indexAction ()
 	{
-		$this->render('index');
+		$this->render('category-index');
+	}
+	
+	public function forAction ()
+	{
+		$this->render('projects-category');
 	}
 }
