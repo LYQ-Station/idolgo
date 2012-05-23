@@ -6,10 +6,9 @@
 <?=$this->headTitle()?>
 <?=$this->headLink()?>
 <link rel="stylesheet" type="text/css" href="/css/default.css"/>
-<link rel="stylesheet" href="/js/jui/themes/base/jquery.ui.all.css" type="text/css" media="all" />
-<script type="text/javascript" src="/js/jquery142.js"></script>
-<script type="text/javascript" src="/js/jui/jquery.ui.core.min.js"></script>
-<script type="text/javascript" src="/js/jui/jquery-ui-1.8.4.custom.min.js"></script>
+<link rel="stylesheet" href="/js/jui/themes/ui-lightness/jquery-ui-1.8.20.custom.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.20.custom.min.js"></script>
 <script type="text/javascript" src="/js/jquery.tablex.js"></script>
 <?=$this->headScript()?>
 </head>

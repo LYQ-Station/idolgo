@@ -3,7 +3,6 @@
 /**
  * 主框架控制器
  *
- * @author Steven
  */
 class IndexController extends BaseController
 {

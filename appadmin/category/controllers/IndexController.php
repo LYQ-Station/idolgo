@@ -3,7 +3,6 @@
 /**
  * 分类控制器
  *
- * @author Steven
  */
 class Category_IndexController extends BaseController
 {

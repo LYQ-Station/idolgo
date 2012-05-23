@@ -1,7 +1,4 @@
-<div class="page_head">
-    <div class="page_title">项目动态列表</div>
-</div>
-<div class="page_body">
+<div class="page_body" style="top:0">
     <table class="ttable">
         <tr>
             <th width="25"><input type="checkbox" /></th>
@@ -94,40 +91,6 @@ $(function ()
 				self.closest('tr').remove();
 			}
 		});
-	});
-	
-	//-------------------------------- 高级查询窗口 --------------------------------
-	var srh_win = null;
-	$('#srh_adv_btn').click(function ()
-	{
-		$.ajax({
-			url: '<?=$this->buildUrl('searchfields')?>',
-			success: function (data)
-			{	
-				if (data.err_no)
-				{
-					alert(data.err_text);
-					return false;
-				}
-				
-				if (srh_win)
-					srh_win.close();
-								
-				srh_win = open('<?=$this->buildUrl('index','search','default')?>', '', 'menubar=no,width=650,height=500');
-				
-				srh_win.navigator['data'] = data.content;
-				var ob = {};
-				srh_win.navigator['listener'] = $(ob);
-				$(ob).bind('submit', function (evn, data)
-				{
-					window.location = '<?=$this->buildUrl('list')?>' + '?c=' + data;
-				});
-				
-				srh_win.focus();
-			}
-		});
-		
-		return false;
 	});
 });
 </script>

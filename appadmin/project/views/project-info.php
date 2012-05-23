@@ -4,42 +4,16 @@
     	<button id="btn_approval" lang="0">Approval</button>
         <button id="btn_cancel">Cancel</button>
         <a href="<?=$this->buildUrl('list')?>">Close</a>
+        
+        <label id="tabs">
+        <a href="<?=$this->buildUrl('details', 'info')?>">Details</a>
+        <a href="<?=$this->buildUrl('posts', 'info')?>">Posts</a>
+        <a href="<?=$this->buildUrl('followers', 'info')?>">Followers</a>
+        </label>
     </div>
 </div>
 <div class="page_body_b">
-	<table class="tinfo">
-    	<tr>
-            <td class="tlabel"><label class="r">项目名称:</label></td>
-            <td><input type="text" value="999" /></td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">项目类型: </label></td>
-            <td><select></select></td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">发起地点: </label></td>
-            <td>
-            	<select></select>
-                <select></select>
-            </td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">简要说明: </label></td>
-            <td><textarea></textarea></td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">缩略图: </label></td>
-            <td><input type="file" name="thumb"></td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">目标金额: </label></td>
-            <td><input type="text" name="total_amount" /></td>
-        </tr>
-        <tr>
-        	<td class="tlabel"><label class="r">上线天数: </label></td>
-            <td><input type="text" name="online_days" /></td>
-        </tr>
-    </table>
+	<iframe id="iframe" name="iframe" frameborder="0" style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%"></iframe>
 </div>
 <?=JsUtils::ob_start();?>
 <script>
@@ -99,6 +73,14 @@ $(function ()
 			});
 		}
 	});
+	
+	$('#tabs>a').bind('click', function ()
+	{
+		$('#iframe').attr('src', this.href);
+		return false;
+	});
+	
+	$('#iframe').attr('src', $('#tabs>a').first().attr('href'));
 });
 </script>
 <?=JsUtils::ob_end();?>

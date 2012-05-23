@@ -3,7 +3,6 @@
         <li><span>项目分类</span>
             <ul class="sub">
                 <li><a href="<?=$this->buildUrl('list','index','category')?>">分类列表</a></li>
-                <li><a href="<?=$this->buildUrl('addpage','index','category')?>">添加分类</a></li>
             </ul>
         </li>
     </ul>
