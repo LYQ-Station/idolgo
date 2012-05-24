@@ -15,6 +15,6 @@ class Project_HotspotController extends BaseController
 	
 	public function indexAction ()
     {
-        $this->render('recommends-index');
+        $this->render('hotspot-index');
     }
 }

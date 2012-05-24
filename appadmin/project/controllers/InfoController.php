@@ -25,6 +25,6 @@ class Project_InfoController extends BaseController
 	
 	public function followersAction ()
 	{
-		echo 'project followers';
+		$this->render('project-follower-list');
 	}
 }
