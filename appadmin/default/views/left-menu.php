@@ -10,6 +10,8 @@
 	<ul>
         <li><span>项目</span>
             <ul class="sub">
+            	<li><a href="<?=$this->buildUrl('index','recommends','project')?>">首页分类推荐</a></li>
+                <li><a href="<?=$this->buildUrl('index','hotspot','project')?>">首页热点</a></li>
                 <li><a href="<?=$this->buildUrl('list','index','project')?>">项目列表</a></li>
 <!--                <li><a href="<?=$this->buildUrl('addpage','index','project')?>">添加项目</a></li>-->
             </ul>
