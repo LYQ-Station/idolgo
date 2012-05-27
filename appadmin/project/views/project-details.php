@@ -37,8 +37,6 @@
 <script>
 $(function ()
 {
-	$('.ttable').tablex();
-	
 	$.ajaxSetup({
 		global: false,
 		type: "POST",

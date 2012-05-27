@@ -27,11 +27,36 @@ class Acl_UserController extends BaseController
 		
         $this->render('user-list');
     }
+	
+	public function infoAction ()
+	{
+		$this->render('user-info');
+	}
+	
+	public function detailsAction ()
+	{
+		$this->render('user-details');
+	}
+	
+	public function projectsAction ()
+	{
+		$this->render('user-projects-list');
+	}
+	
+	public function followersAction ()
+	{
+		$this->render('user-followers-list');
+	}
     
     public function ajaxdisableAction ()
     {
         
     }
+	
+	public function ajaxenableAction ()
+	{
+		
+	}
     
     public function ajaxdeleteAction ()
     {

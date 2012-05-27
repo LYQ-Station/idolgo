@@ -1,14 +1,13 @@
 <div class="page_head">
-    <div class="page_title">项目内容</div>
+    <div class="page_title">User information</div>
     <div class="page_nav">
-    	<button id="btn_approval" lang="0">Approval</button>
-        <button id="btn_cancel">Cancel</button>
+    	<button id="btn_disable" lang="0">Disable</button>
         <a href="<?=$this->buildUrl('list')?>">Close</a>
         
         <label id="tabs">
-        <a href="<?=$this->buildUrl('details', 'info')?>">Details</a>
-        <a href="<?=$this->buildUrl('posts', 'info')?>">Posts</a>
-        <a href="<?=$this->buildUrl('followers', 'info')?>">Followers</a>
+            <a href="<?=$this->buildUrl('details', 'user')?>">Details</a>
+            <a href="<?=$this->buildUrl('projects', 'user')?>">Projects</a>
+            <a href="<?=$this->buildUrl('followers', 'user')?>">Followers</a>
         </label>
     </div>
 </div>
@@ -25,14 +24,14 @@ $(function ()
 		dataType: 'json'
 	});
 	
-	$('#btn_approval').click(function () {
+	$('#btn_disable').click(function () {
 		var self = this;
 		
 		if ('0' == self.lang)
 		{
 			$.ajax({
-				url: '<?=$this->buildUrl('ajaxapproval')?>',
-				data: $.param({id:<?=$this->request->proj_id?>}),
+				url: '<?=$this->buildUrl('ajaxdisable')?>',
+				data: $.param({id:<?=$this->request->id?>}),
 				success: function (data)
 				{
 					if (data.err_no)
@@ -41,9 +40,9 @@ $(function ()
 						return false;
 					}
 					
-					self.innerHTML = 'Unapproval';
+					self.innerHTML = 'Enable';
 					self.lang = 1;
-					alert('have approval!');
+					alert('have disabled!');
 					
 					return false;
 				}
@@ -52,8 +51,8 @@ $(function ()
 		else
 		{
 			$.ajax({
-				url: '<?=$this->buildUrl('ajaxunapproval')?>',
-				data: $.param({id:<?=$this->request->proj_id?>}),
+				url: '<?=$this->buildUrl('ajaxenable')?>',
+				data: $.param({id:<?=$this->request->id?>}),
 				success: function (data)
 				{
 					if (data.err_no)
@@ -62,9 +61,9 @@ $(function ()
 						return false;
 					}
 					
-					self.innerHTML = 'Approval';
+					self.innerHTML = 'Disable';
 					self.lang = 0;
-					alert('have unapproval!');
+					alert('have enabled!');
 					
 					return false;
 				}
@@ -78,6 +77,7 @@ $(function ()
 		return false;
 	});
 	
+	document.title = $('#tabs>a').first().attr('href');
 	$('#iframe').attr('src', $('#tabs>a').first().attr('href'));
 });
 </script>
